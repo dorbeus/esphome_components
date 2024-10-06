@@ -25,9 +25,9 @@ void SerialCSV::parse_values_() {
   int epos = 0;
   std::vector<float> values;
   while (epos != std::string::npos) {
-    epos = s.find(',', spos);
+    epos = s.find(';', spos);
     int len = (epos == std::string::npos ? s.size() - spos : epos - spos);
-    values.push_back(parse_number<float>(s.substr(spos, len)).value_or(NAN));
+    values.push_back(parse_number<int>(s.substr(spos, len)));
     if (epos != std::string::npos)
       spos = epos + 1;
   }
